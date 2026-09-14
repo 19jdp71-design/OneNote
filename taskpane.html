@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Markdown for OneNote</title>
+
+  <!-- Office JS (must be loaded from Microsoft's CDN) -->
+  <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+
+  <!-- Markdown parsing + HTML sanitizing (pinned versions, no build step required) -->
+  <script src="https://cdn.jsdelivr.net/npm/marked@4.3.0/marked.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.6/dist/purify.min.js"></script>
+
+  <link rel="stylesheet" href="taskpane.css" />
+</head>
+<body>
+  <div id="offline-banner" class="banner" hidden>
+    Not running inside OneNote — showing preview only. "Insert into Page" is disabled.
+  </div>
+
+  <div class="toolbar">
+    <button id="btn-insert" title="Insert the rendered Markdown into the current OneNote page">Insert into Page</button>
+    <button id="btn-copy" title="Copy the raw Markdown to the clipboard">Copy Markdown</button>
+    <span id="status" class="status"></span>
+  </div>
+
+  <div class="panes">
+    <textarea id="md-input" spellcheck="false" placeholder="# Type Markdown here
+
+- [ ] Task one
+- [x] Done already
+
+**Bold**, *italic*, `code`.
+"></textarea>
+    <div id="preview" class="preview"></div>
+  </div>
+
+  <script src="taskpane.js"></script>
+</body>
+</html>
